@@ -1,0 +1,12 @@
+OneToMany relation:
+    Bidirectional:
+    - @JoinColumn is 'many' side,which owns a foreign key
+    - mappedBy on 'one' side
+    - Generate emplyees and add them
+    - generate accounts and and connect them with employee, add accounts individually
+    - and put optional false so no account can exist without employee associated with it.
+    refr : https://www.baeldung.com/jpa-joincolumn-vs-mappedby
+Load() vs Get():
+    -load will generate proxy object while get will actually feth object from DB.
+    -load throws exception if entry not exist and get returns null
+- whenever we want to set employee in account, we use load to get employee as we just need to use reference of it to set
