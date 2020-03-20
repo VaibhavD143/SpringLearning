@@ -1,5 +1,6 @@
-package com.example.restful;
+package com.example.restful.VO;
 
+import com.example.restful.VO.Account;
 import lombok.Data;
 
 import javax.persistence.*;

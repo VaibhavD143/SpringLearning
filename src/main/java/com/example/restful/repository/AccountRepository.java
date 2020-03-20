@@ -1,9 +1,9 @@
 package com.example.restful.repository;
 
-import com.example.restful.VO.Employee;
+import com.example.restful.VO.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
+public interface AccountRepository extends JpaRepository<Account , Integer> {
 }

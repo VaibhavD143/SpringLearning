@@ -1,23 +1,29 @@
 package com.example.restful.contoller;
 
-import com.example.restful.Employee;
-import com.example.restful.EmplyeeRepository;
+import com.example.restful.VO.Employee;
+import com.example.restful.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping("employee/")
 public class EmployeeController {
 
     @Autowired
-    EmplyeeRepository emplyeeRepository;
+    EmployeeRepository employeeRepository;
 
-    @GetMapping("/employees")
+    @GetMapping("/getAll")
     public List<Employee> getEmployees(){
-        return emplyeeRepository.findAll();
+        return employeeRepository.findAll();
     }
+
+    @PostMapping("/insert`")
+    public Employee createEmployee(@Valid @RequestBody Employee employee)
+    {
+        return employeeRepository.save(employee);
+    }
+
 }

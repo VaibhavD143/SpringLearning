@@ -1,3 +1,6 @@
 CommandLine Runner and Application Runner:
     - these two are interfaces. These interfaces are implemented and their run method will be called right after spring application context is loaded and just before run() of application
     - There cam ne multiple methods to be called and we can also assign an order in which it should be executed
+
+- @RequestBody is used to indicate that receiving data is of JSON format
+- @Valid is to check constrain mentioned in entity class

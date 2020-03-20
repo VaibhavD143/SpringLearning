@@ -1,5 +1,7 @@
 package com.example.restful;
 
+import com.example.restful.VO.Account;
+import com.example.restful.VO.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 

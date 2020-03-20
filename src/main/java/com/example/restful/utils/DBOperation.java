@@ -1,5 +1,6 @@
-package com.example.restful;
+package com.example.restful.utils;
 
+import com.example.restful.SessionUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

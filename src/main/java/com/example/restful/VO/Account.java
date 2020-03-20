@@ -1,6 +1,5 @@
-package com.example.restful;
+package com.example.restful.VO;
 
-import org.omg.CORBA.INTERNAL;
 
 import javax.persistence.*;
 
@@ -53,3 +52,7 @@ public class Account {
     }
 
 }
+
+
+
+
