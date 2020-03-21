@@ -1,6 +1,9 @@
 package com.example.restful.VO;
 
 import com.example.restful.VO.Account;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -25,7 +28,7 @@ public class Employee {
     private String email;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")
-//    @JoinColumn(name = "EMP_ID")
+    @JsonIgnoreProperties(value = {"employee", "hibernateLazyInitializer"}, allowSetters = true)
     private Set<Account> accounts;
 
     @Override

@@ -26,4 +26,9 @@ public class EmployeeController {
         return employeeRepository.save(employee);
     }
 
+    @GetMapping("/getOne")
+    public Employee getEmployee(){
+        System.out.println(employeeRepository.getOne(1));
+        return employeeRepository.getOne(1);
+    }
 }

@@ -6,7 +6,14 @@ OneToMany relation:
     - generate accounts and and connect them with employee, add accounts individually
     - and put optional false so no account can exist without employee associated with it.
     refr : https://www.baeldung.com/jpa-joincolumn-vs-mappedby
+    @JsonIgnore : to avoid infinite loop problem in bide=irectional mapping
+        - it will omit that entity in json, so no loop
+@JsonIgnoreProperties("properties") : to ignore particular properties while json serialization.
+
+- spring.jackson.serialization.fail-on-empty-beans=false : to avoid exception on empty bean serialization
+
 Load() vs Get():
     -load will generate proxy object while get will actually feth object from DB.
     -load throws exception if entry not exist and get returns null
 - whenever we want to set employee in account, we use load to get employee as we just need to use reference of it to set
+
