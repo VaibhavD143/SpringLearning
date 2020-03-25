@@ -1,8 +1,6 @@
 package com.example.restful.VO;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -19,7 +17,7 @@ public class Account {
     @Column(unique = true, nullable = false)
     private String accountNumber;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "EMP_ID")
 //    @JsonIgnore
     @JsonIgnoreProperties(value = {"accounts","hibernateLazyInitializer"},allowSetters = true)
@@ -58,7 +56,3 @@ public class Account {
     }
 
 }
-
-
-
-

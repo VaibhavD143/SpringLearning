@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -25,21 +26,23 @@ public class Employee {
     private String lastName;
 
     @Column(unique = true,nullable = false)
-    private String email;
+    private String email="here.here";
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"employee", "hibernateLazyInitializer"}, allowSetters = true)
     private Set<Account> accounts;
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", accounts=" + accounts +
-                '}';
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addressId")
+    @JsonIgnoreProperties(value = {"employee", "hibernateLazyInitializer"}, allowSetters = true)
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public Set<Account> getAccounts() {
@@ -83,5 +86,17 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", accounts=" + accounts +
+                ", address=" + address +
+                '}';
     }
 }

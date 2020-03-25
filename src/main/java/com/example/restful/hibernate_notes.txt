@@ -8,12 +8,31 @@ OneToMany relation:
     refr : https://www.baeldung.com/jpa-joincolumn-vs-mappedby
     @JsonIgnore : to avoid infinite loop problem in bide=irectional mapping
         - it will omit that entity in json, so no loop
+
 @JsonIgnoreProperties("properties") : to ignore particular properties while json serialization.
 
-- spring.jackson.serialization.fail-on-empty-beans=false : to avoid exception on empty bean serialization
+OneToOne relation:
+    - on key side JsonColumn and other side mappedBy
+    - use @JsonIgnoreProperties to avoid infinte loop here too!
+
+Enum type field:
+    - create enum type field
+    - add @Enumerated annotation with EnumType.String if string type
+    - ref : https://vladmihalcea.com/the-best-way-to-map-an-enum-type-with-jpa-and-hibernate/
+
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS)
+Solution:
+    - spring.jackson.serialization.fail-on-empty-beans=false : to avoid exception on empty bean serialization
 
 Load() vs Get():
     -load will generate proxy object while get will actually feth object from DB.
     -load throws exception if entry not exist and get returns null
 - whenever we want to set employee in account, we use load to get employee as we just need to use reference of it to set
 
+- default value is assgined to property directly as setting columnDefinition is vendor dependent
+
+Creation date :
+- assign default value to date field with current date object
+
+Any column annotation help:
+- ref: https://www.baeldung.com/

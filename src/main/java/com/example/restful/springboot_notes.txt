@@ -4,3 +4,10 @@ CommandLine Runner and Application Runner:
 
 - @RequestBody is used to indicate that receiving data is of JSON format
 - @Valid is to check constrain mentioned in entity class
+- Spring Repository assigns proxy, it will
+    - https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa : understand repository interface
+
+- @RequestBody can receive only one object in a request
+    - Common practice is to create a class with those attributesxz
+    - To get whole JsonTree as an object use jackson's ObjectNode object
+    https://stackoverflow.com/questions/12893566/passing-multiple-variables-in-requestbody-to-a-spring-mvc-controller-using-ajax
