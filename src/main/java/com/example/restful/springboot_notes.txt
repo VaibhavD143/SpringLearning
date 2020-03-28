@@ -11,3 +11,19 @@ CommandLine Runner and Application Runner:
     - Common practice is to create a class with those attributesxz
     - To get whole JsonTree as an object use jackson's ObjectNode object
     https://stackoverflow.com/questions/12893566/passing-multiple-variables-in-requestbody-to-a-spring-mvc-controller-using-ajax
+
+Serialization and deserialization :
+- @JsonRootName("KeyName") : name to assign root key while serializing when mapper.enable(SerializationFeature.WRAP_ROOT_VALUE),
+    otherwise it will take classname as a key but for lazyFetch className is a bit modified.
+- mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY) : to avoid all the empty fields while serialization
+NON_NULL : to avoid null values
+- @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss") : to use this format while serialization
+    otherwise jackson converts it to timestamp
+- returning json string or JsonNode object, both is same
+- we need to disable this property (SerializationFeature.FAIL_ON_EMPTY_BEANS,false) explicitly for mapper even though
+  it is mentioned in application.property
+        why?:
+        -
+
+- to avoid tailing objects to get serialized, we set them to null and then send.
+        - there is MixIn something to avoid particular class fields while serialization : https://www.baeldung.com/jackson-ignore-properties-on-serializationhttps://www.baeldung.com/jackson-ignore-properties-on-serialization

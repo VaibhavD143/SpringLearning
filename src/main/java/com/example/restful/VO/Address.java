@@ -1,11 +1,15 @@
 package com.example.restful.VO;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@JsonRootName("Address")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +25,7 @@ public class Address {
 
 //    to test date field, creation date example
     @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
     private Date dateTest;
 
     @PrePersist
@@ -81,7 +86,6 @@ public class Address {
         return "Address{" +
                 "id=" + id +
                 ", number='" + number + '\'' +
-                ", employee=" + employee +
                 ", dateTest=" + dateTest +
                 ", gender=" + gender +
                 '}';

@@ -53,7 +53,7 @@ public class Employee {
         this.accounts = accounts;
     }
 
-    public Employee(){};
+    public Employee(){}
 
 
     public Integer getId() {
@@ -95,8 +95,6 @@ public class Employee {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", accounts=" + accounts +
-                ", address=" + address +
                 '}';
     }
 }
