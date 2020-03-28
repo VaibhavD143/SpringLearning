@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,10 +100,16 @@ public class AddressController {
         return (new Converter()).toJson(addresses,"Addresses");
     }
 
-    @PostMapping("/testFJson")
-    public Address testFJsonAll(@RequestBody String node) throws JsonProcessingException {
+    @PostMapping("/testFJsonAll")
+    public List<Address> testFJsonAll(@RequestBody String node) throws JsonProcessingException {
         System.out.println(node);
-        return (Address) (new Converter()).fromJson(node, "AddressRef");
+        List<Address> addresses = (new Converter()).fromJsonList(node, "Addresses", Address[].class);
+        return addresses;
+    }
+    @PostMapping("/testFJson")
+    public Address testFJson(@RequestBody String node) throws JsonProcessingException {
+        Address address = (Address) (new Converter()).fromJson(node, "Address", Address.class);
+        return address;
     }
 
 }

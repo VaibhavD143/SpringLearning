@@ -1,35 +1,39 @@
 package com.example.restful.utils;
 
 import com.example.restful.VO.Address;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Converter {
 
-    public Object fromJson(String jsonString, String ClassRef) throws JsonProcessingException {
+    public List<Address> fromJsonList(String jsonString, String key, java.lang.Class T) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
 //        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 //        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 
         JsonNode node = mapper.readTree(jsonString);
-        System.out.println(node);
+        System.out.println("---------------------------");
+        String str = node.get(key).toString();
+        List<Address> addresses = mapper.readValue(str, new TypeReference<List<Address>>() {});
+        return addresses;
+    }
 
-        String str = node.get("Address").toString();
-        return mapper.readValue(str,Address.class);
+    public Object fromJson(String jsonString, String key, java.lang.Class T) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        JsonNode node = mapper.readTree(jsonString);
+        String str = node.get(key).toString();
+        System.out.println(str);
+        return mapper.readValue(str,T);
     }
 
     public String toJson(Object object,String key) throws JsonProcessingException {
