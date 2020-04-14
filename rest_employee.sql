@@ -1,0 +1,2 @@
+INSERT INTO rest.employee (id, email, first_name, last_name, address_id) VALUES (1, 'vaibhav.dodiya', 'Vaibhav', 'Dodiua', 1);
+INSERT INTO rest.employee (id, email, first_name, last_name, address_id) VALUES (2, 'anything', 'anu', 'ad', 2);

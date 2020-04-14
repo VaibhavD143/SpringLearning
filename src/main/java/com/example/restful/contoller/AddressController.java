@@ -9,15 +9,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import jdk.nashorn.internal.ir.ObjectNode;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 
 @RestController
 @RequestMapping("address/")
@@ -42,6 +44,17 @@ public class AddressController {
     @PostMapping("/insert")
     public Address createAddress(@Valid @RequestBody Address address) {
         return addressRepository.save(address);
+    }
+
+    @PostMapping("/insertAll")
+    public List<Address> createAddresses(){
+        List<Address> addresses = this.getAddresses();
+        return addressRepository.saveAll(addresses);
+    }
+
+    @GetMapping("/testSort")
+    public List<Address> getSortedAddresses(){
+        return addressRepository.findAll(Sort.by(Sort.Direction.ASC,"employee.firstName"));
     }
 
     @GetMapping("/testNode")
@@ -103,13 +116,19 @@ public class AddressController {
     @PostMapping("/testFJsonAll")
     public List<Address> testFJsonAll(@RequestBody String node) throws JsonProcessingException {
         System.out.println(node);
-        List<Address> addresses = (new Converter()).fromJsonList(node, "Addresses", Address[].class);
+        List<Address> addresses = (new Converter<Address>()).fromJsonList(node, "Addresses");
         return addresses;
     }
     @PostMapping("/testFJson")
     public Address testFJson(@RequestBody String node) throws JsonProcessingException {
         Address address = (Address) (new Converter()).fromJson(node, "Address", Address.class);
         return address;
+    }
+
+    @GetMapping("/testDate")
+    public List<Address> getAddressesByDate() throws ParseException {
+        System.out.println(java.sql.Date.valueOf(LocalDate.now()));
+        return addressRepository.findByDateTest(java.sql.Date.valueOf(LocalDate.now()));
     }
 
 }

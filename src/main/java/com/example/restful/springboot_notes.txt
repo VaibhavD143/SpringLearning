@@ -27,3 +27,9 @@ NON_NULL : to avoid null values
 
 - to avoid tailing objects to get serialized, we set them to null and then send.
         - there is MixIn something to avoid particular class fields while serialization : https://www.baeldung.com/jackson-ignore-properties-on-serializationhttps://www.baeldung.com/jackson-ignore-properties-on-serialization
+
+- Serialization Deserialization :
+http://tutorials.jenkov.com/java-json/jackson-objectmapper.html#jackson-databind
+        - general Object mapper :   https://www.baeldung.com/jackson-object-mapper-tutorial
+                                    https://github.com/FasterXML/jackson-databind/
+        - for map to and fro : https://www.baeldung.com/jackson-map

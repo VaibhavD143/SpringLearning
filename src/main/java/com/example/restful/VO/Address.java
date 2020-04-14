@@ -6,7 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity
 @JsonRootName("Address")
@@ -25,13 +26,9 @@ public class Address {
 
 //    to test date field, creation date example
     @Column(nullable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
-    private Date dateTest;
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date dateTest= Date.valueOf(LocalDate.now());
 
-    @PrePersist
-    protected void onCreate(){
-        dateTest = new Date();
-    }
 
     public enum Gender {
         MALE, FEMALE, OTHER

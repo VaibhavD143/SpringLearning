@@ -1,0 +1,2 @@
+INSERT INTO rest.address (id, date_test, gender, number) VALUES (1, '2020-03-25 07:01:37', 'MALE', '1');
+INSERT INTO rest.address (id, date_test, gender, number) VALUES (2, '2020-03-25 07:03:00', 'OTHER', '2');
