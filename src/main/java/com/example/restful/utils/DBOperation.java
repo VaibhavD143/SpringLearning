@@ -47,14 +47,14 @@ public class DBOperation {
         return (Integer) getCurrentSession().save(object);
     }
 
-    public <T> List<T> getList(Class<T> tClass, String query){
-        Query<T> q = getCurrentSession().createQuery(query,tClass);
-        return q.list();
-    }
-
-    public <T> T load(Class<T> type, int _id){
-        return getCurrentSession().load(type,_id);
-    }
+//    public <T> List<T> getList(Class<T> tClass, String query){
+//        Query<T> q = getCurrentSession().createQuery(query,tClass);
+//        return q.list();
+//    }
+//
+//    public <T> T load(Class<T> type, int _id){
+//        return getCurrentSession().load(type,_id);
+//    }
 
 
     public void update(Object object){
@@ -67,12 +67,12 @@ public class DBOperation {
         query.executeUpdate();
     }
 
-    public boolean deleteById(Class<?> _class_type,int _object_id){
-        Object persistence_object = getCurrentSession().load(_class_type,_object_id);
-        if(persistence_object!=null){
-            getCurrentSession().delete(persistence_object);
-            return true;
-        }
-        return false;
-    }
+//    public boolean deleteById(Class<?> _class_type,int _object_id){
+//        Object persistence_object = getCurrentSession().load(_class_type,_object_id);
+//        if(persistence_object!=null){
+//            getCurrentSession().delete(persistence_object);
+//            return true;
+//        }
+//        return false;
+//    }
 }

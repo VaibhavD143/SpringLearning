@@ -67,14 +67,14 @@ public class App {
         System.out.println("there!");
         System.out.println("Emplyees Inserted succesfully");
         dbOperation.openCurrentSessionWithTransaction();
-        Employee emp = dbOperation.load(Employee.class,1);
-        System.out.println(emp);
+//        Employee emp = dbOperation.load(Employee.class,1);
+//        System.out.println(emp);
 
 ////        dbOperation.openCurrentSessionWithTransaction();
         Account account4 = new Account();
         account4.setAccountNumber("a3");
 
-        account4.setEmployee(emp);
+//        account4.setEmployee(emp);
         dbOperation.insert(account4);
 //
 //        Employee emp = dbOperation.load(Employee.class,1);
@@ -106,8 +106,8 @@ public class App {
 //        System.out.println(emp);
         dbOperation.closeCurrentSessionWithTransaction();
         dbOperation.openCurrentSessionWithTransaction();
-        Employee empt = dbOperation.load(Employee.class,1);
-        System.out.println(empt);
+//        Employee empt = dbOperation.load(Employee.class,1);
+//        System.out.println(empt);
         dbOperation.closeCurrentSessionWithTransaction();
 
 
