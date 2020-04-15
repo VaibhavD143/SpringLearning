@@ -10,7 +10,7 @@ import java.util.Set;
 public class App {
     public static void main(String[] args) throws InterruptedException {
 //        (new SessionUtil()).getSessionFactory();
-//	kya baat hai, nai chal rha tu!
+//	kya baat hai, nai chal rha tu!!!
         DBOperation dbOperation = new DBOperation();
         dbOperation.openCurrentSessionWithTransaction();
 
