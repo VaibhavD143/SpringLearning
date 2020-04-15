@@ -2,7 +2,6 @@ package com.example.restful.repository;
 
 import com.example.restful.VO.Address;
 import org.apache.tomcat.jni.Local;
-import org.omg.CORBA.INTERNAL;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
